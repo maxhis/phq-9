@@ -1,0 +1,114 @@
+/* Additional styles for PHQ-9 questionnaire */
+
+/* Base styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Improve radio button visibility and touch targets */
+input[type="radio"] {
+    cursor: pointer;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+/* Question card styles */
+.question-card {
+    transition: all 0.2s ease;
+}
+
+.question-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Option label styles */
+.option-label {
+    transition: all 0.2s ease;
+}
+
+.option-label:hover {
+    background-color: rgba(243, 244, 246, 0.8);
+    border-color: rgba(209, 213, 219, 1);
+}
+
+/* Add responsive adjustments */
+@media (max-width: 768px) {
+    .option-label {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .question-card h3 {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+    
+    .container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .option-label {
+        padding: 0.625rem 0.5rem;
+    }
+    
+    input[type="radio"] {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-right: 0.5rem;
+    }
+    
+    .question-card {
+        padding: 0.75rem;
+    }
+}
+
+/* Add smooth transitions */
+.hidden {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Add some focus styles for accessibility */
+input[type="radio"]:focus {
+    outline: 2px solid rgba(59, 130, 246, 0.5);
+    outline-offset: 2px;
+}
+
+button:focus {
+    outline: 2px solid rgba(59, 130, 246, 0.5);
+    outline-offset: 2px;
+}
+
+/* Style for the result section */
+#resultSection {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#resultSection.visible {
+    opacity: 1;
+}
+
+/* Add a subtle border to the form */
+#phq9Form {
+    border: 1px solid rgba(229, 231, 235, 0.8);
+    transition: all 0.3s ease;
+}
+
+/* Improve button styles */
+button {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Improve result section on mobile */
+@media (max-width: 480px) {
+    #resultSection h2 {
+        font-size: 1.25rem;
+    }
+    
+    #resultSection .p-3 {
+        padding: 0.75rem;
+    }
+}
