@@ -2,7 +2,17 @@
 
 /* Base styles */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: "PingFang SC","Microsoft YaHei","SimHei",-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f5f7fa;
+}
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
 }
 
 /* Improve radio button visibility and touch targets */
@@ -12,29 +22,91 @@ input[type="radio"] {
     height: 1.2rem;
 }
 
-/* Question card styles */
+/* 问题卡片圆角与阴影 */
 .question-card {
-    transition: all 0.2s ease;
+    border-radius: 16px;
+    box-shadow: 0 3px 12px 1px rgba(41,58,106,0.06);
+    border: 1px solid #e5e9f2;
+    background: #f7fafe;
+    padding: 1.5rem;
 }
 
 .question-card:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 18px rgba(41,58,106,0.12);
+    border-color: #90b7f5;
+    background: #f1f8ff;
 }
 
-/* Option label styles */
+/* 选项按钮视觉加强 */
+.options-group {
+    gap: 1rem;
+}
 .option-label {
-    transition: all 0.2s ease;
+    border-radius: 12px;
+    padding: 0.9rem 0.6rem;
+    border: 1.5px solid #e0eafc;
+    background: #fff;
+    transition: all 0.18s;
+    display: flex;
+    align-items: center;
+}
+.option-label:hover {
+    border-color: #4896ff;
+    background: #e8f1ff;
+}
+input[type="radio"]:checked + div span {
+    color: #2563eb;
+    font-weight: bold;
 }
 
-.option-label:hover {
-    background-color: rgba(243, 244, 246, 0.8);
-    border-color: rgba(209, 213, 219, 1);
+/* 标题与按钮增强 */
+h1, h2 {
+    font-weight: 800;
+    color: #1a284f;
+}
+button, .main-btn {
+    border-radius: 11px;
+    padding: 0.65rem 2.1rem;
+    font-weight: 700;
+    background: linear-gradient(88deg, #4686ff, #42bbfc 85%);
+    color: #fff;
+    box-shadow: 0 1.5px 10px 0px rgba(60,110,200,0.08);
+    border: none;
+    font-size: 1.15rem;
+    transition: transform 0.15s, box-shadow 0.22s;
+}
+button:hover, .main-btn:hover {
+    background: #2367c8;
+    transform: scale(1.045);
+}
+
+/* 分数和说明区域 */
+#resultSection, .result-section {
+    background: #f4f7fb;
+    border-radius: 14px;
+    box-shadow: 0 2px 16px rgba(0,20,70,0.07);
+    border: 1.2px solid #dde6f5;
+    padding: 1.5rem 1.1rem 1.1rem 1.1rem;
+}
+
+#totalScore {
+    color: #2563eb;
+    background: #e3effd;
+    border-radius: 7px;
+    padding: 0.15rem 0.7rem;
+    font-size: 1.2rem;
+}
+
+footer {
+    margin-top: 2.5rem !important;
+    color: #8c98b8;
 }
 
 /* Add responsive adjustments */
 @media (max-width: 768px) {
     .option-label {
-        padding: 0.75rem 0.5rem;
+        padding: 0.65rem 0.42rem;
+        font-size: 0.98rem;
     }
     
     .question-card h3 {
@@ -43,14 +115,19 @@ input[type="radio"] {
     }
     
     .container {
-        padding-left: 0.75rem;
-        padding-right: 0.75rem;
+        padding: 1rem;
+    }
+    .question-card {
+        padding: 1rem;
+    }
+    h1 {
+        font-size: 1.3rem;
     }
 }
 
 @media (max-width: 480px) {
     .option-label {
-        padding: 0.625rem 0.5rem;
+        padding: 0.49rem 0.28rem;
     }
     
     input[type="radio"] {
@@ -60,7 +137,13 @@ input[type="radio"] {
     }
     
     .question-card {
-        padding: 0.75rem;
+        padding: 0.7rem;
+    }
+    .container {
+        padding: 0.5rem;
+    }
+    #resultSection {
+        padding: 1rem 0.4rem 0.6rem 0.4rem;
     }
 }
 
@@ -90,10 +173,12 @@ button:focus {
     opacity: 1;
 }
 
-/* Add a subtle border to the form */
+/* 移除表单边框与底色优化 */
 #phq9Form {
-    border: 1px solid rgba(229, 231, 235, 0.8);
-    transition: all 0.3s ease;
+    border: none !important;
+    background: none !important;
+    box-shadow: none;
+    /* 保留必要内边距 */
 }
 
 /* Improve button styles */

@@ -12,6 +12,31 @@ document.addEventListener('DOMContentLoaded', function() {
         phq9Form.addEventListener('submit', function(e) {
             e.preventDefault();
             e.stopPropagation();
+
+            // 检查所有题目是否都已作答
+            let allFilled = true;
+            let firstUnfilled = null;
+            for (let i = 1; i <= 9; i++) {
+                const options = phq9Form.querySelectorAll(`input[name="q${i}"]`);
+                let checked = false;
+                options.forEach(opt => { if (opt.checked) checked = true; });
+                if (!checked) {
+                    allFilled = false;
+                    if (!firstUnfilled) firstUnfilled = `第${i}题`;
+                    break;
+                }
+            }
+            // 如有未答，给予提示并阻止后续提交
+            let oldWarn = document.getElementById('unfilledWarning');
+            if (oldWarn) oldWarn.remove();
+            if (!allFilled) {
+                const warn = document.createElement('div');
+                warn.textContent = firstUnfilled ? `${firstUnfilled}未作答，请完成所有题目再提交。` : '请完成所有题目再提交。';
+                warn.id = 'unfilledWarning';
+                warn.className = 'text-red-500 my-4 text-center';
+                phq9Form.parentNode.insertBefore(warn, phq9Form.nextSibling);
+                return false;
+            }
             
             // Calculate scores
             const formData = new FormData(phq9Form);
